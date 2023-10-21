@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Random Passward Generator</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>Generate a <br><span>Random Passward</h1></span>
+            <div class="display">
+                <input type="text" id="passward" placeholder="passward">
+
+                <img src="images\copy.png" onclick="copyPassward()">
+
+            </div>
+            <button onclick="createPassward()"><img src="images\generate.png">Generate passward</button>
+        </div>
+        <script>
+            const passwardBox = document.getElementById("passward");
+            const length = 12;
+            const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+
+         const number = "012345689";   
+         const symbol = "@#$%^&*()_+";
+         const allChars = upperCase + lowerCase + number + symbol;
+         function createPassward(){
+            let passward = "";
+            passward += upperCase[Math.floor(Math.random() * upperCase.length)];
+            passward += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+            passward += number[Math.floor(Math.random() * number.length)];
+            passward += symbol[Math.floor(Math.random() * symbol.length)];
+          while(length > passward.length){
+            passward += allChars[Math.floor(Math.random() * allChars.length)];
+
+          }
+          passwardBox.value = passward;
+}
+
+       function copyPassward(){
+        passwardBox.select();
+        document.execCommand("copy");
+       }
+
+     
+        </script>
+    </body>
+</html>
